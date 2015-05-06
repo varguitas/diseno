@@ -1,0 +1,19 @@
+<div class="col-md-12">
+	<form class="validation-form">
+		<!-- INPUTS HERE -->
+		<div class="form-group col-md-4" ng-repeat="input in structure">
+			<label for="{{ input.name }}">{{ input.label }}</label>
+			<input data-parsley-type="{{ input.validation }}" data-parsley-min="{{ input.minValue }}" type="{{ input.type }}" class="form-control operation-criteria" id="{{ input.name }}" required ng-model="input.value">
+		</div>
+		<div class="col-md-1">
+			<br>
+			<button ng-click="operate()">=</button>
+		</div>
+		<div class="col-md-3">
+			<output>{{ result }}</output>
+		</div>
+	</form>
+	<div class="col-md-12">
+		<pre>{{ structure }}</pre>
+	</div>
+</div>
