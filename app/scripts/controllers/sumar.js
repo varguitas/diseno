@@ -10,7 +10,6 @@
 angular.module('proyectodisenoApp')
   .controller('SumarCtrl', function ($scope, SumarControlador, $http) {
   	$scope.$on('$viewContentLoaded', function() {
-  		$scope.validator = $('.validation-form').parsley();
   		$scope.Controlador = new SumarControlador($scope,$http);
   		$scope.result = null;
   	});
@@ -19,8 +18,9 @@ angular.module('proyectodisenoApp')
     	{name: 'input_02', type: 'text', label: 'Número 2', validation: 'integer', minValue: 0}
     ];
     $scope.operate = function() {
-    	$scope.validator.validate();
-    	if ($scope.validator.isValid()) {
+  		var $validator = $('.validation-form').parsley();
+    	$validator.validate();
+    	if ($validator.isValid()) {
     		$scope.Controlador.operate($scope.structure);
     	} else {
     		$scope.result = null;
